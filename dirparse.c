@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         // INPUT ERROR: signal invalid value (must be 0 or 1 only)
         else
         {
-            printf("Signal STATE ERROR\n");
+            printf("Signal STATE ERROR, sigA=%u, sigB=%u\n", sigA, sigB);
             exit(-1);
         }
 
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
             // STATE HAS CHANGED: determine direction
             direction = direction_from_state(ipestate_prev, ipestate, direction_prev);
 
-            printf("direction is %d: @ time=%lf, sigA=%d, sigB=%d\n", direction, time, sigA, sigB);
+            //printf("direction is %d: @ time=%lf, sigA=%d, sigB=%d\n", direction, time, sigA, sigB);
             ipestate_prev = ipestate;
 
             if(direction != direction_prev)
