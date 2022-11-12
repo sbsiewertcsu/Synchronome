@@ -9,7 +9,7 @@ int direction_from_state(unsigned int prev_state, unsigned int state, int curren
 
 int main(int argc, char *argv[])
 {
-    int rc, idx, direction=0, direction_prev=0;
+    int rc, idx, direction=0, direction_prev=0, dir_change_cnt=0;
     unsigned int sigA, sigB, ipestate=0, ipestate_prev=0;
     size_t linelen;
     double time;
@@ -79,7 +79,8 @@ int main(int argc, char *argv[])
 
             if(direction != direction_prev)
             {
-                printf("DIRECTION CHANGE: @ time=%lf, from %d to %d\n", time, direction_prev, direction);
+		dir_change_cnt++;
+                printf("DIRECTION CHANGE %d: @ time=%lf, from %d to %d\n", dir_change_cnt, time, direction_prev, direction);
             }
 
             direction_prev = direction;
