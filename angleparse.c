@@ -55,6 +55,8 @@ int main(int argc, char *argv[])
         else if((sigA == 0) && (sigB == 1))
             ipestate=1;
 
+	if(idx == 0) ipestate_prev=ipestate;
+
         // INPUT ERROR: signal invalid value (must be 0 or 1 only)
         else
         {

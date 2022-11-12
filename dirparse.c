@@ -64,13 +64,17 @@ int main(int argc, char *argv[])
             exit(-1);
         }
 
+	// one time case to set previous to current on first loop
+	if(idx==0) ipestate_prev=ipestate;
+
+        //printf("@ time=%lf, sigA=%d, sigB=%d\n", time, sigA, sigB);
 
         if(ipestate != ipestate_prev)
         {
             // STATE HAS CHANGED: determine direction
             direction = direction_from_state(ipestate_prev, ipestate, direction_prev);
 
-            //printf("direction is %d: @ time=%lf, sigA=%d, sigB=%d\n", direction, time, sigA, sigB);
+            printf("direction is %d: @ time=%lf, sigA=%d, sigB=%d\n", direction, time, sigA, sigB);
             ipestate_prev = ipestate;
 
             if(direction != direction_prev)
@@ -85,6 +89,7 @@ int main(int argc, char *argv[])
         // NOTHING HAS CHANGED - consume data and continue
         else
         {
+            //printf(".");
             ipestate_prev = ipestate;
             direction_prev = direction;
         }
