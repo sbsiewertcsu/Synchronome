@@ -1,0 +1,52 @@
+images = 'C:\Users\siewerts\Documents\MATLAB\pendTruth\PGM';
+pgmfiles=dir(fullfile(images, '\*.pgm*'));
+
+cd(images);
+
+cd C:\Users\siewerts\Documents\MATLAB\pendTruth\PGM
+
+fullFileName = fullfile(theFiles(k).folder, baseFileName);
+
+for i=1:length(pgmfiles)
+imshow(pgmfiles(i).name)
+end
+
+% this is a 256x256x1 grayscale image
+gimage = imread(pgmfiles(i).name);
+
+% this is a 256x256x3 grayscale image
+cimage = repmat(gimage,[1 1 3]);
+
+
+for i=1:length(pgmfiles)
+pgmfullfile=fullfile(pgmfiles(i).folder, pgmfiles(i).name);
+gimage = imread(pgmfullfile);
+cimage = repmat(gimage,[1 1 3]);
+imshow(cimage)
+end
+
+ppmfiles=pgmfiles;
+
+for i=1:length(pgmfiles)
+pgmfiles(i).name
+end
+
+for i=1:length(pgmfiles)
+ppmfiles(i).name(length(pgmfiles(i).name)-1)='p'; 
+%length(pgmfiles(i).name)
+end
+
+
+for i=1:length(ppmfiles)
+ppmfiles(i).name 
+length(pgmfiles(i).name)
+end
+
+for i=1:length(pgmfiles)
+pgmfullfile=fullfile(pgmfiles(i).folder, pgmfiles(i).name);
+gimage = imread(pgmfullfile);
+cimage = repmat(gimage,[1 1 3]);
+cimagefullfile=fullfile('C:\Users\siewerts\Documents\MATLAB\pendTruth\PGM24', ppmfiles(i).name);
+imshow(cimage)
+imwrite(cimage, cimagefullfile); 
+end
