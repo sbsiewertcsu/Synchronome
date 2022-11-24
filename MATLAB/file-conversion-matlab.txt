@@ -1,3 +1,13 @@
+% Use to replace root directory user with a new user
+for i=1:length(pendDataset)
+gTruth.imageFilename(i)=replace(gTruth.imageFilename(i),"sbsiewert","samue");
+end
+
+%% Save gTruth to overwrite the original truth table matlab file
+
+% The following are general examples of how to update a list of PGM files as a list of PPM files and to write them
+% out to files
+
 images = 'C:\Users\siewerts\Documents\MATLAB\pendTruth\PGM';
 pgmfiles=dir(fullfile(images, '\*.pgm*'));
 
